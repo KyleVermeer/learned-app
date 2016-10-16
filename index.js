@@ -1,9 +1,15 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var bcrypt = require('bcrypt');
 
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json()); // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
@@ -34,6 +40,21 @@ app.get('/db', function (request, response) {
        { response.render('pages/db', {results: result.rows} ); }
     });
   });
+});
+
+app.get('/user', function (request, response) {
+    response.render('pages/user');
+});
+
+app.post('/user', function (request, response) {
+    var requestBody = request.body;
+    console.log('Name: ' + requestBody.display_name);
+    console.log('Email: ' + requestBody.email);
+    console.log('Password: ' + requestBody.password);
+    var passwordSalt = 10;
+    var passwordHash = bcrypt.hashSync(requestBody.password, passwordSalt);
+    console.log('Password Hash: ' + passwordHash);
+    response.render('pages/user');
 });
 
 app.listen(app.get('port'), function() {
