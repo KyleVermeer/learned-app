@@ -1,9 +1,9 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "learned-app",
+  "version": "0.1.0",
+  "description": "An app made for remembering things you want to remember.",
   "engines": {
-    "node": "5.9.1"
+    "node": "6.8.1"
   },
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/KyleVermeer/learned-app"
   },
   "keywords": [
     "node",
