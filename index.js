@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var bcrypt = require('bcrypt');
 
 app.set('port', (process.env.PORT || 5000));
 

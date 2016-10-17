@@ -5,6 +5,7 @@
 
 // Dependencies
 var pg = require('pg');
+var bcrypt = require('bcrypt');
 
 // Exports
 module.exports = createRouter;
