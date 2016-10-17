@@ -15,47 +15,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
-
-app.get('/times', function(request, response) {
-    var result = ''
-    var times = process.env.TIMES || 5
-    for (i=0; i < times; i++)
-      result += i + ' ';
-    response.send(result);
-});
-
-var pg = require('pg');
-
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    console.log(err);
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
-});
-
-app.get('/user', function (request, response) {
-    response.render('pages/user');
-});
-
-app.post('/user', function (request, response) {
-    var requestBody = request.body;
-    console.log('Name: ' + requestBody.display_name);
-    console.log('Email: ' + requestBody.email);
-    console.log('Password: ' + requestBody.password);
-    var passwordSalt = 10;
-    var passwordHash = bcrypt.hashSync(requestBody.password, passwordSalt);
-    console.log('Password Hash: ' + passwordHash);
-    response.render('pages/user');
-});
+// Router
+var createRouter = require('./router.js');
+router = createRouter();
+router.bindRoutesToApp(app);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
