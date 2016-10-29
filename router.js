@@ -12,6 +12,7 @@ module.exports = createRouter;
 function Router() {
 
     this.signupRouter = require('./webapp/signup/router.js');
+    this.usersRouter = require('./webapp/users/router.js');
 
     /**
      * Binds routes onto an app
@@ -23,6 +24,7 @@ function Router() {
         app.get('/', this._getIndex);
         app.get('/db', this._getDBSamplePage);
         app.use('/signup', this.signupRouter);
+        app.use('/user', this.usersRouter);
     }
 
     // Private Methods
