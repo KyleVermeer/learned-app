@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password Salt</th>
+        <th>Password Hash</th>
+        <th>Created</th>
+    </tr>
+    <tr>
+        <td><%= display_name %></td>
+        <td><%= login %></td>
+        <td><%= password_salt %></td>
+        <td><%= password_hash %></td>
+        <td><%= created_date %></td>
+    </tr>
+</table>
+
+</body>
+</html>
