@@ -6,6 +6,7 @@
 function Router() {
     this.signupRouter = require('./webapp/signup/router.js');
     this.usersRouter = require('./webapp/users/router.js');
+    this.nuggetRouter = require('./webapp/nugget/router.js');
 }
 
 /**
@@ -18,6 +19,7 @@ Router.prototype.bindRoutesToApp = function(app) {
     app.get('/', this._getIndex);
     app.use('/signup', this.signupRouter);
     app.use('/user', this.usersRouter);
+    app.use('/nugget', this.nuggetRouter);
 }
 
 // Private Methods
