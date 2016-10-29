@@ -6,7 +6,7 @@
 var express = require('express');
 var router = express.Router();
 
-var ControllerModule = require('./controllers/user.js')
+var ControllerModule = require('./controllers')
 var signupController = new ControllerModule.SignupController();
 
 router.get('/', signupController.getCreateUser);

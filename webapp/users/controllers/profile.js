@@ -9,4 +9,5 @@
      response.send('User Profile Page TBB');
  }
 
+// Exports
  module.exports = UserProfileController;

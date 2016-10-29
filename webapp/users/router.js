@@ -1,5 +1,5 @@
 /**
- * This creates a router for signup
+ * This creates a router for user related functions
  * @author kvermeer
  */
 

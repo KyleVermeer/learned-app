@@ -17,9 +17,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 // Router
-var createRouter = require('./router.js');
-router = createRouter();
-router.bindRoutesToApp(app);
+var Router = require('./router.js');
+var masterRouter = new Router();
+masterRouter.bindRoutesToApp(app);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
