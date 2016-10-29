@@ -25,12 +25,14 @@ function SignupController() {
          var username = requestBody.display_name;
          var login = requestBody.email;
          var password = requestBody.password;
-         console.log('Name: ' + username);
-         console.log('Email: ' + login);
-         console.log('Password: ' + password);
          var userCreationService = new UserManagement.UserCreationService();
-         userCreationService.createUser(username, login, password);
-         response.render('pages/user');
+         userCreationService.createUser(username, login, password, function(success) {
+             if (success) {
+                 response.render('pages/user');
+             } else {
+                 response.send('Whoops!');
+             }
+         });
      }
 }
 
