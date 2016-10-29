@@ -2,6 +2,8 @@
  * Controller for managing user signup
  * @author kvermeer
  */
+var UserManagement = require('core/user_management');
+
 function SignupController() {
 
     /**
@@ -20,12 +22,14 @@ function SignupController() {
      */
      this.postCreateUser = function(request, response) {
          var requestBody = request.body;
-         console.log('Name: ' + requestBody.display_name);
-         console.log('Email: ' + requestBody.email);
-         console.log('Password: ' + requestBody.password);
-         var passwordSalt = 10;
-         var passwordHash = bcrypt.hashSync(requestBody.password, passwordSalt);
-         console.log('Password Hash: ' + passwordHash);
+         var username = requestBody.display_name;
+         var login = requestBody.email;
+         var password = requestBody.password;
+         console.log('Name: ' + username);
+         console.log('Email: ' + login);
+         console.log('Password: ' + password);
+         var userCreationService = new UserManagement.UserCreationService();
+         userCreationService.createUser(username, login, password);
          response.render('pages/user');
      }
 }
