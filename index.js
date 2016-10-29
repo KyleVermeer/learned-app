@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser'); // Middleware for request bodies
+var morgan = require('morgan'); // Logging
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -9,6 +10,7 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
+app.use(morgan('combined'));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
