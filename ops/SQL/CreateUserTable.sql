@@ -4,5 +4,6 @@ create table "user" (
     login varchar(255) UNIQUE,
     password_salt integer,
     password_hash varchar(255),
-    created_date timestamp NOT NULL DEFAULT now()
+    created_at timestamp NOT NULL DEFAULT now(),
+    updated_at timestamp NOT NULL DEFAULT now()
 );
