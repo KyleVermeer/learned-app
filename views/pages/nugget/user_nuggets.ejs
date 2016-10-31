@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Nugget</title>
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th>User Id</th>
+        <th>Content</th>
+        <th>Created</th>
+        <th>Updated</th>
+    </tr>
+    <% for(var i=0; i < nuggetList.length; i++) { %>
+        <tr>
+            <td><%= nuggetList[i].user_id %></td>
+            <td><%= nuggetList[i].content %></td>
+            <td><%= nuggetList[i].created_at %></td>
+            <td><%= nuggetList[i].updated_at %></td>
+        </tr>
+    <% } %>
+</table>
+
+</body>
+</html>

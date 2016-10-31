@@ -8,9 +8,11 @@ var router = express.Router();
 
 var ControllerModule = require('./controllers')
 var nuggetController = new ControllerModule.NuggetController();
+var userNuggetController = new ControllerModule.UserNuggetController();
 
-router.get('/', nuggetController.createNuggetPage);
-router.post('/', nuggetController.createNuggetSubmit);
+router.get('/create', nuggetController.createNuggetPage);
+router.post('/create', nuggetController.createNuggetSubmit);
 router.get('/:nuggetId', nuggetController.viewNugget);
+router.get('/user/:userId', userNuggetController.viewNuggetsForUser);
 
 module.exports = router;
