@@ -4,9 +4,12 @@
  */
 
 // Dependencies
+var BaseComponents = require('../../base');
 var NuggetManagement = require('core/nugget_management');
+var util = require('util');
 
 function NuggetController() {}
+util.inherits(NuggetController, BaseComponents.BaseController);
 
 /**
  * Method for viewing a pre-existing nugget

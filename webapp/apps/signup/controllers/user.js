@@ -2,9 +2,14 @@
  * Controller for managing user signup
  * @author kvermeer
  */
+
+// Dependencies
+var BaseComponents = require('../../base');
 var UserManagement = require('core/user_management');
+var util = require('util');
 
 function SignupController() {}
+util.inherits(SignupController, BaseComponents.BaseController);
 
 /**
  * @param {Express.Request} request - the request object

@@ -4,10 +4,10 @@
  */
 
 function Router() {
-    this.signupRouter = require('./webapp/signup/router.js');
-    this.usersRouter = require('./webapp/users/router.js');
-    this.nuggetRouter = require('./webapp/nugget/router.js');
-    this.loginRouter = require('./webapp/login/router.js');
+    this.signupRouter = require('./webapp/apps/signup/router.js');
+    this.usersRouter = require('./webapp/apps/users/router.js');
+    this.nuggetRouter = require('./webapp/apps/nugget/router.js');
+    this.loginRouter = require('./webapp/apps/login/router.js');
 }
 
 /**

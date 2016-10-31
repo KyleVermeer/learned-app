@@ -9,7 +9,7 @@ var router = express.Router();
 var ControllerModule = require('./controllers')
 var signupController = new ControllerModule.SignupController();
 
-router.get('/', signupController.getCreateUser);
-router.post('/', signupController.postCreateUser);
+router.get('/', signupController.getCreateUser.bind(signupController));
+router.post('/', signupController.postCreateUser.bind(signupController));
 
 module.exports = router;

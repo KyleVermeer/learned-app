@@ -4,9 +4,12 @@
  */
 
 // Dependencies
+var BaseComponents = require('../../base');
 var UserManagement = require('core/user_management');
+var util = require('util');
 
 function UserProfileController() {}
+util.inherits(UserProfileController, BaseComponents.BaseController);
 
 UserProfileController.prototype.getUserProfile = function(request, response) {
 

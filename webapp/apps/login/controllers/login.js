@@ -4,9 +4,12 @@
  */
 
 // Dependencies
+var BaseComponents = require('../../base');
 var UserManagement = require('core/user_management');
+var util = require('util');
 
 function LoginController() {}
+util.inherits(LoginController, BaseComponents.BaseController);
 
 /**
  * Method for rendering the login page
@@ -15,8 +18,12 @@ function LoginController() {}
  * @return {void}
  */
 LoginController.prototype.getLoginPage = function(request, response) {
-    response.render('pages/login/login');
-}
+    if (this.isUserLoggedIn(request)) {
+        response.redirect('/home');
+    } else {
+        response.render('pages/login/login');
+    }
+};
 
 /**
  * Method for handling the submit on the login page
@@ -32,7 +39,7 @@ LoginController.prototype.postLoginPage = function(request, response) {
     var loginService = new UserManagement.LoginService();
     loginService.checkLoginCredentials(email, password).then(function(data) {
         if (data.success) {
-            request.session.user_id = data.userId;
+            request.session.userId = data.userId;
             response.redirect('/home');
         }
         else {
@@ -48,7 +55,7 @@ LoginController.prototype.postLoginPage = function(request, response) {
  * @return {void}
  */
 LoginController.prototype.logout = function(request, response) {
-    delete request.session.user_id;
+    delete request.session.userId;
     response.redirect('/login');
 }
 

@@ -10,9 +10,9 @@ var logoutRouter = express.Router();
 var ControllerModule = require('./controllers')
 var loginController = new ControllerModule.LoginController();
 
-loginRouter.get('/', loginController.getLoginPage);
-loginRouter.post('/', loginController.postLoginPage);
-logoutRouter.get('/', loginController.logout);
+loginRouter.get('/', loginController.getLoginPage.bind(loginController));
+loginRouter.post('/', loginController.postLoginPage.bind(loginController));
+logoutRouter.get('/', loginController.logout.bind(loginController));
 
 module.exports.LoginRouter = loginRouter;
 module.exports.LogoutRouter = logoutRouter;
