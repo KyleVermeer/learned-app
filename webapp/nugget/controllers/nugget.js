@@ -19,11 +19,11 @@ NuggetController.prototype.viewNugget = function(request, response) {
 
     // Use NuggetCreationServie to actually query the object
     var nuggetCRUDService = new NuggetManagement.NuggetCRUDService();
-    nuggetCRUDService.retrieveNugget(nuggetId, function(nugget, err) {
+    nuggetCRUDService.retrieveNugget(nuggetId).then(function(nugget) {
         if (nugget) {
             response.render('pages/nugget/view_nugget', nugget);
         } else {
-            response.send(err);
+            response.status(500).end();
         }
     });
 }
@@ -49,15 +49,9 @@ NuggetController.prototype.createNuggetSubmit = function(request, response) {
 
     // Use NuggetCreationServie to actually create the object
     var nuggetCRUDService = new NuggetManagement.NuggetCRUDService();
-    nuggetCRUDService.createNugget(content, 'markdown', 1, function(id, err) {
-        if (id) {
-            response.redirect(302, '/nugget/' + id);
-        } else {
-            response.send(err);
-        }
+    nuggetCRUDService.createNugget(content, 'markdown', 1).then(function(data) {
+        response.redirect(302, '/nugget/' + data.nuggetId);
     });
 }
-
-
 
 module.exports = NuggetController;
