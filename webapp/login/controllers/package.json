@@ -1,0 +1,4 @@
+{
+    "name" : "login_controllers",
+    "main" : "./index.js"
+}
