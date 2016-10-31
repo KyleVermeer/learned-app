@@ -12,6 +12,17 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 app.use(morgan('combined'));
 
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+app.use(session({
+    store: new RedisStore({
+        url: process.env.REDIS_URL,
+    }),
+    resave: false,
+    saveUninitialized: false,
+    secret: 'abc123'
+}));
+
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
