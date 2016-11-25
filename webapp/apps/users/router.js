@@ -4,11 +4,17 @@
  */
 
 var express = require('express');
-var router = express.Router();
-
 var ControllerModule = require('./controllers')
+
+var profileRouter = express.Router();
 var profileController = new ControllerModule.UserProfileController();
 
-router.get('/profile/:userId', profileController.getUserProfile);
+profileRouter.get('/profile/:userId', profileController.getUserProfile);
 
-module.exports = router;
+var homeRouter = express.Router();
+var homeController = new ControllerModule.HomeController();
+
+homeRouter.get('/', homeController.getHomePage.bind(homeController));
+
+module.exports.ProfileRouter = profileRouter;
+module.exports.HomeRouter = homeRouter;

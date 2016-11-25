@@ -19,7 +19,8 @@ function Router() {
 Router.prototype.bindRoutesToApp = function(app) {
     app.get('/', this._getIndex);
     app.use('/signup', this.signupRouter);
-    app.use('/user', this.usersRouter);
+    app.use('/user', this.usersRouter.ProfileRouter);
+    app.use('/home', this.usersRouter.HomeRouter);
     app.use('/nugget', this.nuggetRouter);
     app.use('/login', this.loginRouter.LoginRouter);
     app.use('/logout', this.loginRouter.LogoutRouter);
