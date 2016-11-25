@@ -9,7 +9,7 @@ function BaseController() {}
  * Returns a boolean indicating if the user is logged in
  *
  * @param {Express.Request} request -  the current request
- * @return {boolean} - true if user is logged in, false otherwise
+ * @returns {boolean} - true if user is logged in, false otherwise
  */
 BaseController.prototype.isUserLoggedIn = function(request) {
     return request.session.userId !== undefined && request.session.userId !== null;
@@ -19,10 +19,21 @@ BaseController.prototype.isUserLoggedIn = function(request) {
  * Returns the user id of the currently logged in user
  *
  * @param {Express.Request} request -  the current request
- * @return {int} - the id of the current user
+ * @returns {int} - the id of the current user
  */
 BaseController.prototype.getCurrentUserId = function(request) {
     return request.session.userId;
+}
+
+/**
+ * @param {Express.Request} request -  the current request
+ * @param {Express.Response} response - the current response
+ * @returns {void}
+ */
+BaseController.prototype.requireLoginIn = function(request, response) {
+    if (!this.isUserLoggedIn(request)) {
+        response.redirect('/login');
+    }
 }
 
 module.exports = BaseController;
