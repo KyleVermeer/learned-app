@@ -38,6 +38,7 @@ NuggetController.prototype.viewNugget = function(request, response) {
  * @return {void}
  */
 NuggetController.prototype.createNuggetPage = function(request, response) {
+    this.requireLoginIn(request, response);
     response.render('pages/nugget/create_nugget');
 }
 
@@ -48,11 +49,12 @@ NuggetController.prototype.createNuggetPage = function(request, response) {
  * @return {void}
  */
 NuggetController.prototype.createNuggetSubmit = function(request, response) {
+    this.requireLoginIn(request, response);
     var content = request.body.nugget_content;
 
     // Use NuggetCreationServie to actually create the object
     var nuggetCRUDService = new NuggetManagement.NuggetCRUDService();
-    nuggetCRUDService.createNugget(content, 'markdown', 1).then(function(data) {
+    nuggetCRUDService.createNugget(content, 'markdown', this.getCurrentUserId(request)).then(function(data) {
         response.redirect(302, '/nugget/' + data.nuggetId);
     });
 }
