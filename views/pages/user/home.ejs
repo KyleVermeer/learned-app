@@ -7,20 +7,13 @@
 
 <body>
     <header>
-        <%- include('../../partials/nav.ejs') %>
+        <%- include('../../partials/nav.ejs'); %>
     </header>
 
     <div class='main-content'>
         <% for(var i=0; i < nuggetList.length; i++) { %>
         <div class='row s12'>
-            <div class='card col s4 offset-s4 blue-grey darken-1'>
-                <div class='card-content white-text'>
-                    <p><%= nuggetList[i].user_id %></p>
-                    <p><%= nuggetList[i].content %></p>
-                    <p><%= nuggetList[i].created_at %></p>
-                    <p><%= nuggetList[i].updated_at %></p>
-                </div>
-            </div>
+            <%- include('../../partials/nugget.ejs', { nugget: nuggetList[i] }); %>
         <div>
         <% } %>
     </div>
