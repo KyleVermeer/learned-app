@@ -34,7 +34,7 @@ Router.prototype.bindRoutesToApp = function(app) {
  * @return {void}
  */
 Router.prototype._getIndex = function(request, response) {
-    response.render('pages/index');
+    response.redirect('/login');
 }
 
 // Exports
