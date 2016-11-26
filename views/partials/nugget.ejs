@@ -5,6 +5,8 @@
         <p><%= nugget.updated_at %></p>
     </div>
     <div class="card-action">
-        <a href="/nugget/<%= nugget.nugget_id %>">Go to Nugget</a>
+        <% if(showGoToLink) { %>
+            <a href="/nugget/<%= nugget.nugget_id %>">Go to Nugget</a>
+        <% } %>
     </div>
 </div>

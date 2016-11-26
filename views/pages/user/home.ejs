@@ -13,7 +13,7 @@
     <div class='main-content'>
         <% for(var i=0; i < nuggetList.length; i++) { %>
         <div class='row s12'>
-            <%- include('../../partials/nugget.ejs', { nugget: nuggetList[i] }); %>
+            <%- include('../../partials/nugget.ejs', { nugget: nuggetList[i], showGoToLink: true }); %>
         <div>
         <% } %>
     </div>
