@@ -27,6 +27,12 @@ app.use(session({
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+// Set userId for use on all templates
+app.use(function(request, response, next) {
+    response.locals.userId = request.session.userId;
+    next();
+});
+
 // Router
 var Router = require('./router.js');
 var masterRouter = new Router();
