@@ -19,7 +19,7 @@ HomeController.prototype.getHomePage = function(request, response) {
     var userId = this.getCurrentUserId(request);
     var nuggetFinderService = new NuggetManagement.NuggetFinderService();
     nuggetFinderService.findRecentlyUpdatedNuggetsForUser(userId, 5).then(function(nuggetList) {
-        response.render('pages/nugget/user_nuggets', { nuggetList: nuggetList });
+        response.render('pages/user/home', { nuggetList: nuggetList });
     });
 }
 
