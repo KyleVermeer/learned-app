@@ -7,6 +7,7 @@
 var BaseComponents = require('../../base');
 var NuggetManagement = require('core/nugget_management');
 var util = require('util');
+var marked = require('marked');
 
 function NuggetController() {}
 util.inherits(NuggetController, BaseComponents.BaseController);
@@ -24,6 +25,7 @@ NuggetController.prototype.viewNugget = function(request, response) {
     var nuggetCRUDService = new NuggetManagement.NuggetCRUDService();
     nuggetCRUDService.retrieveNugget(nuggetId).then(function(nugget) {
         if (nugget) {
+            nugget.content = marked(nugget.content);
             response.render('pages/nugget/view_nugget', nugget);
         } else {
             response.status(500).end();
