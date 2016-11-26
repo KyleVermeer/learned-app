@@ -17,7 +17,7 @@ util.inherits(SignupController, BaseComponents.BaseController);
  * @return {void}
  */
 SignupController.prototype.getCreateUser = function(request, response) {
-    response.render('pages/user');
+    response.render('pages/user/create_user');
 }
 
 /**
