@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Settings</title>
+    <link rel="stylesheet" href="stylesheets/vendor/materialize-0.97.8.min.css">
+    <style>
+        .user-fields {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <%- include('../../partials/nav.ejs'); %>
+    </header>
+
+    <div class='main-content'>
+        <div class="row s12">
+            <div class="col s4 offset-s4">
+                <div class='user-fields'>
+                    <div class='row'>
+                        <label for='display-name-field'>User Name:</label>
+                        <input id='display-name-field' type='text' value='<%= display_name %>' readonly/>
+                    </div>
+                    <div class='row'>
+                        <label for='login-field'>Login:</label>
+                        <input id='login-field' type='text' value='<%= login %>' readonly/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="javascripts/vendor/jquery/3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="javascripts/vendor/materialize/0.97.8/materialize.js"></script>
+
+</body>
+</html>

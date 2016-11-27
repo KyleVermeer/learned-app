@@ -24,6 +24,7 @@ Router.prototype.bindRoutesToApp = function(app) {
     app.use('/nugget', this.nuggetRouter);
     app.use('/login', this.loginRouter.LoginRouter);
     app.use('/logout', this.loginRouter.LogoutRouter);
+    app.use('/settings', this.usersRouter.UserSettingsRouter);
 }
 
 // Private Methods
