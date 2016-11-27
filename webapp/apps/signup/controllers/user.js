@@ -35,7 +35,8 @@ SignupController.prototype.postCreateUser = function(request, response) {
     var userCreationService = new UserManagement.UserCreationService();
     userCreationService.createUser(username, login, password).then(function(data) {
         if (data.userId) {
-            response.redirect('/user/profile/' + data.userId);
+            request.session.userId = data.userId; // login user
+            response.redirect('/home');
         } else {
             response.send('Whoops!');
         }
