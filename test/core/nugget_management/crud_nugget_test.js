@@ -39,7 +39,11 @@ describe('core/nugget_management/crud_nugget', function() {
                 createDeferred.resolve({});
 
                 // Assert
-                assert.isTrue(createStub.called);
+                assert.isTrue(createStub.calledWith({
+                    content: content,
+                    content_markup_format: contentMarkupFormat,
+                    user_id: userId
+                }));
             });
 
             it('should return an object with a nugget id', function() {
@@ -69,6 +73,70 @@ describe('core/nugget_management/crud_nugget', function() {
                 // Resolve Promise
                 createDeferred.resolve(nuggetObject);
             });
+        });
+
+        describe('retrieveNugget', function() {
+
+            it('should call find on the Nugget class', function() {
+                // Setup
+                var nuggetId = 2;
+
+                // Mock
+                var findDeferred = q.defer();
+                var findStub = sandbox.stub(nuggetMock, 'find').returns(findDeferred.promise);
+
+                // Execute
+                var result = NuggetCRUDService.retrieveNugget(nuggetId);
+                findDeferred.resolve({});
+
+                // Assert
+                assert.isTrue(findStub.calledWith({
+                    attributes: ['nugget_id', 'user_id', 'content_markup_format', 'content', 'created_at', 'updated_at'],
+                    where: {
+                        'nugget_id': nuggetId
+                    }
+                }));
+            });
+
+            it('should return an object with nugget properties', function() {
+                // Setup
+                var content = 'abc123';
+                var contentMarkupFormat = 'lexical';
+                var userId = 2;
+                var nuggetId = 123;
+                var nuggetObject = leche.create(['get']);
+                var createdAt = 456;
+                var updatedAt = 789;
+
+                // Mock
+                var findDeferred = q.defer();
+                sandbox.stub(nuggetMock, 'find').returns(findDeferred.promise);
+
+                var nuggetGetStub = sandbox.stub(nuggetObject, 'get');
+                nuggetGetStub.withArgs('nugget_id').returns(nuggetId);
+                nuggetGetStub.withArgs('user_id').returns(userId);
+                nuggetGetStub.withArgs('content_markup_format').returns(contentMarkupFormat);
+                nuggetGetStub.withArgs('content').returns(content);
+                nuggetGetStub.withArgs('created_at').returns(createdAt);
+                nuggetGetStub.withArgs('updated_at').returns(updatedAt);
+
+                // Execute
+                var result = NuggetCRUDService.retrieveNugget(nuggetId);
+                findDeferred.resolve(nuggetObject);
+
+                // Assert
+                return result.then(function (resultData) {
+                    assert.deepEqual({
+                        nugget_id: nuggetId,
+                        user_id: userId,
+                        content_markup_format: contentMarkupFormat,
+                        content: content,
+                        created_at: createdAt,
+                        updated_at: updatedAt
+                    }, resultData);
+                });
+            });
+
         });
     });
 });
