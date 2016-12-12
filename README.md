@@ -6,4 +6,8 @@ To run a sql file against heroku:
 
 Built heavily on http://materializecss.com/
 
-Tried out git hooks!
+Production uses
+- Heroku Postgres :: Database
+
+Dev uses
+- Heroku Postgres :: Red
