@@ -1,6 +1,7 @@
 # Node build artifacts
 node_modules/*
 !node_modules/core
+!node_modules/webapp
 npm-debug.log
 
 # Local development
