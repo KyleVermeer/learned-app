@@ -13,6 +13,7 @@ Box.Application.addModule('create-nugget-form', function(context) {
 
     // Services
     var domService;
+    var ajaxService;
 
     return {
 
@@ -37,6 +38,7 @@ Box.Application.addModule('create-nugget-form', function(context) {
          */
         cacheServices: function() {
             domService = context.getService('dom');
+            ajaxService = context.getService('ajax');
         },
 
         /**
@@ -60,5 +62,5 @@ Box.Application.addModule('create-nugget-form', function(context) {
             var textAreaEl = domService.query('#contentArea', formEl);
             var content = textAreaEl.value;
         }
-    }
+    };
 });
