@@ -11,7 +11,7 @@
         <%- include('../../partials/nav.ejs'); %>
     </header>
     <div class="main-content container">
-        <div class="row s12">
+        <div class="row s12" data-module="create-nugget-form">
             <form method="POST" action="#" class="col offset-s3 s6">
                 <div class="row">
                     <div class="col s12 input-field">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="row center-align">
-                    <button class="btn waves-effect waves-light btn-large" type="submit" name="create-nugget">
+                    <button data-type="create-btn" class="btn waves-effect waves-light btn-large" type="button" name="create-nugget">
                         <i>Create Nugget</i>
                     </button>
                 </div>
@@ -30,6 +30,17 @@
 
     <script src="/javascripts/vendor/jquery/3.1.1/jquery-3.1.1.min.js"></script>
     <script src="/javascripts/vendor/materialize/0.97.8/materialize.min.js"></script>
+    <script src="/javascripts/vendor/t3/2.7.0/t3.min.js"></script>
+    <script src="/javascripts/services/dom.js"></script>
+    <script src="/javascripts/modules/create-nugget-form.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Box.Application.init({
+                debug: true
+            });
+        });
+    </script>
 
 </body>
 </html>
