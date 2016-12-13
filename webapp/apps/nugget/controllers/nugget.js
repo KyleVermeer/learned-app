@@ -2,6 +2,7 @@
  * Controller for basic nugget operations
  * @author kvermeer
  */
+ 'use strict';
 
 // Dependencies
 var BaseComponents = require('../../base');
@@ -42,7 +43,7 @@ NuggetController.prototype.viewNugget = function(request, response) {
 NuggetController.prototype.createNuggetPage = function(request, response) {
     this.requireLoginIn(request, response);
     response.render('pages/nugget/create_nugget');
-}
+};
 
 /**
  * Method for handling the submit of a new nugget
@@ -57,8 +58,18 @@ NuggetController.prototype.createNuggetSubmit = function(request, response) {
     // Use NuggetCreationServie to actually create the object
     var nuggetCRUDService = new NuggetManagement.NuggetCRUDService();
     nuggetCRUDService.createNugget(content, 'markdown', this.getCurrentUserId(request)).then(function(data) {
-        response.redirect(302, '/nugget/' + data.nuggetId);
+        handleCreateNuggetResponse(data, response);
     });
-}
+};
+
+function handleCreateNuggetResponse(data, response) {
+    response.setHeader('Content-Type', 'application/json');
+    var responseData = JSON.stringify({
+        data: {
+            nugget_id: data.nuggetId
+        }
+    });
+    response.send(responseData);
+};
 
 module.exports = NuggetController;

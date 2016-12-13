@@ -61,6 +61,11 @@ Box.Application.addModule('create-nugget-form', function(context) {
         handleCreateButtonClick: function() {
             var textAreaEl = domService.query('#contentArea', formEl);
             var content = textAreaEl.value;
+            ajaxService.post('/nugget/create', {
+                nugget_content: content
+            }).then(function(data) {
+                location = '/nugget/' + data.nugget_id;
+            });
         }
     };
 });

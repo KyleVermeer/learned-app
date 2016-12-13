@@ -21,7 +21,12 @@ HomeController.prototype.getHomePage = function(request, response) {
     var nuggetFinderService = new NuggetManagement.NuggetFinderService();
     nuggetFinderService.findRecentlyUpdatedNuggetsForUser(userId, 5).then(function(nuggetList) {
         nuggetList.forEach(function(nugget) {
-            nugget.content = marked(nugget.content);
+            if (nugget.content !== null) {
+                nugget.content = marked(nugget.content);
+            } else {
+                nugget.content = '';
+            }
+
         });
         response.render('pages/user/home', { nuggetList: nuggetList });
     });

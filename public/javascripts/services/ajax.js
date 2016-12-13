@@ -21,12 +21,14 @@ Box.Application.addService('ajax', function(application) {
             /**
              * Handler function to handle a succesful response from the server
              *
-             * @param {object} data - response data
+             * Assumes response provides a "data" key
+             *
+             * @param {object} response - response data
              * @return {void}
              */
-            function ajaxSuccessHandler(data) {
+            function ajaxSuccessHandler(response) {
                 console.log('success');
-                resolve();
+                resolve(response.data);
             }
 
             /**
