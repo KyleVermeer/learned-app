@@ -2,14 +2,10 @@
  * Test file for the NuggetFinderService
  * @author kvermeer
  */
-describe('webapp/nugget/controllers/nugget', function() {
+describe('unit/webapp/nugget/controllers/nugget', function() {
     'use strict';
 
-    var sandbox = require('sinon').sandbox.create();
-    var assert = require('chai').assert;
-    var leche = require('leche');
-    var proxyquire = require('proxyquire');
-    var q = require('q');
+    var sandbox = sinon.sandbox.create();
 
     describe('NuggetController', function() {
         var nuggetManagementMock = leche.create(['NuggetCRUDService']);

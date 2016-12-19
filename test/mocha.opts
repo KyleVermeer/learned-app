@@ -1,0 +1,2 @@
+--require test/init_tests.js
+--reporter spec
