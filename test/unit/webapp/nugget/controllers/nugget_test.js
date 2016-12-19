@@ -30,10 +30,6 @@ describe('unit/webapp/nugget/controllers/nugget', function() {
 
         describe('createNuggetSubmit', function() {
 
-            beforeEach(function() {
-                sandbox.stub(nuggetController, 'requireLoginIn');
-            });
-
             it('should call NuggetCRUDService.createNugget()', function() {
                 // Setup
                 var content = 'a';
@@ -97,8 +93,6 @@ describe('unit/webapp/nugget/controllers/nugget', function() {
 
             it('should render the pages/nugget/create_nugget template', function() {
                 // Mock
-                sandbox.stub(nuggetController, 'requireLoginIn');
-
                 var renderStub = sandbox.stub(responseMock, 'render');
 
                 // Execute

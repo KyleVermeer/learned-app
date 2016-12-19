@@ -28,10 +28,6 @@ describe('unit/webapp/users/controllers/settings', function() {
 
         describe('getUserSettingsPage', function() {
 
-            beforeEach(function() {
-                sandbox.stub(userSettingsController, 'requireLoginIn');
-            });
-
             it('should call UserProfileService.getUserProfile()', function() {
                 // Setup
                 var userId = 123;
