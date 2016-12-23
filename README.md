@@ -1,5 +1,11 @@
 # learned-app
 
+Setup
+
+1.  Clone the git repo
+
+    `git clone git@github.com:KyleVermeer/learned-app.git`
+
 Front End
 =
 
