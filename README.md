@@ -6,6 +6,43 @@ Setup
 
     `git clone git@github.com:KyleVermeer/learned-app.git`
 
+2.  Checkout a new local branch from master
+    ~~~~
+    # First checkout master, as we want to branch from master
+    git checkout master
+    # Then create a new branch and checkout it out
+    git checkout -b <new branch name>
+    ~~~~
+
+3.  Make some changes, add them, then commit them
+
+    ~~~~
+    # Make some changes
+    ...
+
+    # Add changes to git staging
+    git add .
+
+    # Commit your changes
+    git commit -m "<Sample commit message>"
+    ~~~~
+
+4.  If you need to make more changes, just amend your commit instead of making multiple commits
+
+    ~~~~
+    # Amend current commit
+    git commit --amend
+    ~~~~
+
+5.  Push changes to github
+
+    ~~~~
+    # Push changes
+    git push origin <Your branch name>
+    ~~~~
+
+6.  Create a pull request to have your code reviewed and merged into master
+
 Front End
 =
 
