@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Tag</title>
+    <link rel="stylesheet" href="/stylesheets/vendor/materialize-0.97.8.min.css">
+</head>
+
+<body>
+    <header>
+        <%- include('../../partials/nav.ejs'); %>
+    </header>
+
+    <table>
+        <tr>
+            <th>Tag Id</th>
+            <th>User Id</th>
+            <th>Tag Name</th>
+            <th>Created</th>
+            <th>Updated</th>
+        </tr>
+        <tr>
+            <td><%= tagId %></td>
+            <td><%= userId %></td>
+            <td><%= tagName %></td>
+            <td><%= createdAt %></td>
+            <td><%= updatedAt %></td>
+        </tr>
+    </table>
+
+</body>
+</html>
