@@ -8,6 +8,7 @@ function Router() {
     this.usersRouter = require('webapp/users/router.js');
     this.nuggetRouter = require('webapp/nugget/router.js');
     this.loginRouter = require('webapp/login/router.js');
+    this.tagRouter = require('webapp/tags/router.js');
 }
 
 /**
@@ -25,6 +26,7 @@ Router.prototype.bindRoutesToApp = function(app) {
     app.use('/login', this.loginRouter.LoginRouter);
     app.use('/logout', this.loginRouter.LogoutRouter);
     app.use('/settings', this.usersRouter.UserSettingsRouter);
+    app.use('/tag', this.tagRouter);
 }
 
 // Private Methods
