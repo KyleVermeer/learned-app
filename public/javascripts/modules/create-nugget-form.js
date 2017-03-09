@@ -9,7 +9,6 @@ Box.Application.addModule('create-nugget-form', function(context) {
 
     // Private variables
     var moduleEl;
-    var formEl;
 
     // Services
     var domService;
@@ -30,7 +29,6 @@ Box.Application.addModule('create-nugget-form', function(context) {
          */
         cacheDOMElements: function() {
             moduleEl = context.getElement();
-            formEl = domService.query('form', moduleEl);
         },
 
         /**
@@ -59,12 +57,13 @@ Box.Application.addModule('create-nugget-form', function(context) {
          * @return {void}
          */
         handleCreateButtonClick: function() {
-            var textAreaEl = domService.query('#contentArea', formEl);
-            var content = textAreaEl.value;
+            var editableNuggetEl = domService.query('.editable-nugget', moduleEl);
+            var editableNuggetContentEl = domService.query('.nugget-contents', editableNuggetEl);
+            var content = editableNuggetContentEl.textContent;
             ajaxService.post('/nugget/create', {
                 nugget_content: content
             }).then(function(data) {
-                location = '/nugget/' + data.nugget_id;
+                location = '/home';
             });
         }
     };
