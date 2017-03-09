@@ -4,6 +4,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="stylesheets/vendor/materialize-0.97.8.min.css">
     <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/create-nugget.css">
 </head>
 
 <body>
@@ -12,10 +13,11 @@
     </header>
 
     <div class='main-content'>
-        <div class='row s12 center-align'>
-            <a class="waves-effect waves-light btn s4" href="/nugget/create">
-                Create a Nugget
-            </a>
+        <div class="row s12" data-module="create-nugget-form">
+
+            <div class="row center-align">
+                <%- include('../../partials/create_nugget.ejs'); %>
+            </div>
         </div>
 
         <% for(var i=0; i < nuggetList.length; i++) { %>
@@ -25,6 +27,21 @@
         <% } %>
 
     </div>
+
+    <script src="/javascripts/vendor/jquery/3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/vendor/materialize/0.97.8/materialize.min.js"></script>
+    <script src="/javascripts/vendor/t3/2.7.0/t3.min.js"></script>
+    <script src="/javascripts/services/dom.js"></script>
+    <script src="/javascripts/services/ajax.js"></script>
+    <script src="/javascripts/modules/create-nugget-form.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Box.Application.init({
+                debug: true
+            });
+        });
+    </script>
 
 </body>
 </html>
