@@ -19,12 +19,6 @@
 }
 
 /* Tags */
-.tags {
-    border-top: 1px solid white;
-    margin-top: 5px;
-    padding-top: 5px;
-}
-
 .tag-contents {
     text-align: left;
     color: white;
@@ -34,4 +28,16 @@
 .tag-contents[contentEditable=true]:empty:before {
     content:attr(data-placeholder);
     color: #AAA;
+}
+
+.nugget-section:not(:last-of-type) {
+    border-bottom: 1px solid white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Actions */
+.actions {
+    text-align: right;
+    padding-top: 5px;
 }
