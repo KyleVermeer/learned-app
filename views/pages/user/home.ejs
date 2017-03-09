@@ -3,6 +3,7 @@
 <head>
     <title>Home</title>
     <link rel="stylesheet" href="stylesheets/vendor/materialize-0.97.8.min.css">
+    <link rel="stylesheet" href="stylesheets/home.css">
 </head>
 
 <body>
@@ -11,11 +12,18 @@
     </header>
 
     <div class='main-content'>
+        <div class='row s12 center-align'>
+            <a class="waves-effect waves-light btn s4" href="/nugget/create">
+                Create a Nugget
+            </a>
+        </div>
+
         <% for(var i=0; i < nuggetList.length; i++) { %>
         <div class='row s12'>
             <%- include('../../partials/nugget.ejs', { nugget: nuggetList[i], showGoToLink: true }); %>
-        <div>
+        </div>
         <% } %>
+
     </div>
 
 </body>
